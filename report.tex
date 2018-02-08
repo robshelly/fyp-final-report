@@ -1,0 +1,102 @@
+\documentclass[]{article}
+
+% Review comments stuff
+% -----------------------------------------
+\usepackage[english]{babel}
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage[markup=underlined]{changes}
+% Use "final" option to remove all tracking markups
+% \usepackage[final]{changes}
+
+\definechangesauthor[color=BrickRed]{RB}
+
+% Alternative definition to have the remarks
+% in the margins instead of footnotes
+\usepackage{todonotes}
+\setlength{\marginparwidth}{3cm}
+\makeatletter
+\setremarkmarkup{\todo[color=Changes@Color#1!20,size=\scriptsize]{#1: #2}}
+\makeatother
+
+%% Definition of a plain remark/note
+\newcommand{\note}[2][]{\added[#1,remark={#2}]{}}
+
+% -----------------------------------------
+
+% Increase text width
+\usepackage[left=48pt,right=46pt]{geometry}
+
+% Graphics Stuff
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{ {images/} }
+
+% Bibliography stuff
+\usepackage[round]{natbib}
+% Adds bibliography to toc
+\usepackage[nottoc,numbib]{tocbibind} 
+
+% Makes toc, urls, figure links
+\usepackage{hyperref}
+
+% Format hyperlinks nicer than default way
+\usepackage{xcolor}
+\hypersetup{colorlinks,linkcolor={blue!80!black},citecolor={blue!80!black},urlcolor={blue!80!black}}
+
+% Define custom lists
+\usepackage{enumitem}
+\newlist{AO}{enumerate}{1}
+\setlist[AO,1]{label = \textbf{AO\arabic*}}
+
+\newlist{POC}{enumerate}{1}
+\setlist[POC,1]{label = \textbf{POC\arabic*}}
+
+
+% Title Page
+\title{Backup Management and Orchestration System\\
+	Final Year Project}
+\author{Rob Shelly\\
+	Applied Computing\\
+	20068406}
+
+\begin{document}
+%\maketitle
+% Use custom title page to adhere to project manual
+\noindent \LARGE{\textbf{Backup Restoration Test System}}
+\bigbreak
+\noindent \large{Status Report (semester 1)}
+\bigbreak
+\noindent \Large{Rob Shelly}
+\bigbreak
+\noindent \Large{20068406}
+\bigbreak
+\noindent \Large{Supervisor: Dr. Rosanne Birney}
+\bigbreak
+\bigbreak
+\noindent \Large{BSc (Hons) in Applied Computing}
+\thispagestyle{empty}
+
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+\include{body/introduction}
+\include{body/semester-one}
+\include{body/technologies}
+\include{body/design}
+\include{body/methodology}
+\include{body/implementation}
+\include{body/summary}
+
+
+
+\newpage
+\renewcommand*{\bibfont}{\raggedright}
+\bibliographystyle{plainnat}
+\bibliography{bibliography/bibtex}
+
+\end{document}
+
+
