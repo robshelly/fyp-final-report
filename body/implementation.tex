@@ -36,8 +36,8 @@
 
 	\subsection{Sprint 1}
 		\subsubsection{Sprint Planning}
-		The planning around for this session was based on the existing Jenkins Jobs created for during the prototyping process. These jobs need to exist on the Jenkins server when the system is initially deployed/installed by a user. I.e, the user does not create these jobs.
-		Therefore, these jobs need to be created during the installation process. This sprint focused on creating \textit{yaml} files for these jobs which can be used by \textit{Jenkins Job Builder} to create the jobs during set-up. This also provided the ability to quickly recreate the jobs should the Jenkins Server crash during development.
+		The planning around for this session was based on the existing Jenkins Jobs created for \note[id=RB]{for what?} during the prototyping process. These jobs need to exist on the Jenkins server when the system is initially deployed/installed by a user. I.e, the user does not create these jobs.
+		Therefore, these jobs need to be created during the installation process. This sprint focused on creating \textit{yaml} files for these jobs which can be used by \textit{Jenkins Job Builder} \added[id=RB, remark="show acronym in brackets the first time you use it"]{(JJB)}to create the jobs during set-up. This also provided the ability to quickly recreate the jobs should the Jenkins Server crash during development.
 
 		\subsubsection{Sprint Review}
 		The \textit{yaml} files were created and tested for the following Jenkins jobs:
@@ -48,7 +48,7 @@
 			\item Destroy: Destroys the restoration server after a successful backup restoration.
 			\item Backup Restoration Pipeline:	Performs a full backup test restoration (using the above Jenkins jobs).
 		\end{itemize}
-		The sprint delivered on it's main focus of creating the \textit{yaml} files. However, to further tickets which would have built upon the prototype (displaying the result of the restoration) were not completed.
+		The sprint delivered on it's main focus of creating the \textit{yaml} files. However, \deleted[id=RB]{to} further tickets which would have built upon the prototype (displaying the result of the restoration) were not completed.
 
 		\subsubsection{Sprint Retrospective}
 		\textbf{What did we do well?}
@@ -69,12 +69,12 @@
 			was not reflective of the complexity I had awarded those
 			tickets;
 			\item Outward communication to the stakeholders (Leigh \& Paul)
-			was not as good as it could have been.
+			was not as good as it could have been.\note[id=RB]{Why do you say that? Maybe expand this point a little and say how you will improve communication with stakeholders.}
 		\end{itemize}
 
 		\noindent\textbf{Actions}
 		\begin{itemize}
-			\item Rob Shelly to get a draft of your wireframes to Leigh by next Monday;
+			\item Rob Shelly to get a draft of \deleted[id=RB]{your} wireframes to Leigh by next Monday;
 			\item Rob Shelly to complete MVP plan for the backend system and include an API definition and CLI guide.
 		\end{itemize}
 
@@ -84,10 +84,10 @@
 		
 		
 
-		\subsubsection{Personal Reflection}
+		\subsubsection{Personal Reflection}\note[id=RB]{This section is good, well done.}
 		I was happy with the progress of this sprint as I felt creating the \textit{yaml} files for the Jenkins jobs was an vital task, not only to enable an MVP to be packaged as a deployable system, but to provided an easy method of recreating the Jenkins jobs should there be a loss of AWS servers during development.
 		
-		This sprint also highlighted the importance of planning the sprint with respect to other college work to be completed in the given time frame. Although, this sprint was planned for two weeks, the entirety of the work was completed within a number of days during the later of two weeks. In future, if other college work will take precedence for a number of days, I may plan to delay beginning the sprint, allowing the final burndown chart tot better reflect the progress of work over the sprint.
+		This sprint also highlighted the importance of planning the sprint with respect to other college work to be completed in the given time frame. Although, this sprint was planned for two weeks, the entirety of the work was completed within a number of days during the later of two weeks. In future, if other college work will take precedence for a number of days, I may plan to delay beginning the sprint, allowing the final burndown chart to\deleted[id=RB]{t} better reflect the progress of work over the sprint.
 
 	\subsection{Sprint n}
 
