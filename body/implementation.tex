@@ -36,8 +36,8 @@
 
 	\subsection{Sprint 1}
 		\subsubsection{Sprint Planning}
-		The planning around for this session was based on the existing Jenkins Jobs created for \note[id=RB]{for what?} during the prototyping process. These jobs need to exist on the Jenkins server when the system is initially deployed/installed by a user. I.e, the user does not create these jobs.
-		Therefore, these jobs need to be created during the installation process. This sprint focused on creating \textit{yaml} files for these jobs which can be used by \textit{Jenkins Job Builder} \added[id=RB, remark="show acronym in brackets the first time you use it"]{(JJB)}to create the jobs during set-up. This also provided the ability to quickly recreate the jobs should the Jenkins Server crash during development.
+		The planning around for this session was based on the existing Jenkins Jobs created during the prototyping process. These jobs need to exist on the Jenkins server when the system is initially deployed/installed by a user. I.e, the user does not create these jobs.
+		Therefore, these jobs need to be created during the installation process. This sprint focused on creating \textit{yaml} files for these jobs which can be used by \textit{Jenkins Job Builder} (JJB) to create the jobs during set-up. This also provided the ability to quickly recreate the jobs should the Jenkins Server crash during development.
 
 		\subsubsection{Sprint Review}
 		The \textit{yaml} files were created and tested for the following Jenkins jobs:
@@ -48,7 +48,7 @@
 			\item Destroy: Destroys the restoration server after a successful backup restoration.
 			\item Backup Restoration Pipeline:	Performs a full backup test restoration (using the above Jenkins jobs).
 		\end{itemize}
-		The sprint delivered on it's main focus of creating the \textit{yaml} files. However, \deleted[id=RB]{to} further tickets which would have built upon the prototype (displaying the result of the restoration) were not completed.
+		The sprint delivered on it's main focus of creating the \textit{yaml} files. However, further tickets which would have built upon the prototype (displaying the result of the restoration) were not completed.
 
 		\subsubsection{Sprint Retrospective}
 		\textbf{What did we do well?}
@@ -63,31 +63,90 @@
 		
 		\noindent\textbf{What could have been done better?}
 		\begin{itemize}
-			\item Burndown was inconsistent, consider taking smaller tickets;
+			\item Burndown was inconsistent as most of the work was completed within a short period of time during the sprint;
 			\item Domain knowledge in certain areas (JJB) was not as strong
 			as I would have liked it to be, which slowed me down and
 			was not reflective of the complexity I had awarded those
 			tickets;
 			\item Outward communication to the stakeholders (Leigh \& Paul)
-			was not as good as it could have been.\note[id=RB]{Why do you say that? Maybe expand this point a little and say how you will improve communication with stakeholders.}
+			was not as good as it could have been.
 		\end{itemize}
 
 		\noindent\textbf{Actions}
 		\begin{itemize}
-			\item Rob Shelly to get a draft of \deleted[id=RB]{your} wireframes to Leigh by next Monday;
-			\item Rob Shelly to complete MVP plan for the backend system and include an API definition and CLI guide.
+			\item Rob Shelly to get a draft of wireframes to Leigh by next Monday;
+			\item Rob Shelly to complete MVP plan for the backend system and include an API definition and CLI guide;
+      \item Rob Shelly to send regular updates on progress to stakeholders.
 		\end{itemize}
 
 		\subsubsection{Sprint Burndown}
-		% TODO
-		//TODO
 		
-		
-
-		\subsubsection{Personal Reflection}\note[id=RB]{This section is good, well done.}
+ 		\begin{figure}[H]
+      \setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
+      \caption{Sprint 1 Burndown Chart}
+      \centering
+      \includegraphics[width=\textwidth,keepaspectratio]{burndown-sprint-1}
+      \label{fig:burndown-sprint-1}
+    \end{figure}
+   
+		\subsubsection{Personal Reflection}
 		I was happy with the progress of this sprint as I felt creating the \textit{yaml} files for the Jenkins jobs was an vital task, not only to enable an MVP to be packaged as a deployable system, but to provided an easy method of recreating the Jenkins jobs should there be a loss of AWS servers during development.
 		
-		This sprint also highlighted the importance of planning the sprint with respect to other college work to be completed in the given time frame. Although, this sprint was planned for two weeks, the entirety of the work was completed within a number of days during the later of two weeks. In future, if other college work will take precedence for a number of days, I may plan to delay beginning the sprint, allowing the final burndown chart to\deleted[id=RB]{t} better reflect the progress of work over the sprint.
+		This sprint also highlighted the importance of planning the sprint with respect to other college work to be completed in the given time frame. Although, this sprint was planned for two weeks, the entirety of the work was completed within a number of days during the later of two weeks. In future, if other college work will take precedence for a number of days, I may plan to delay beginning the sprint, allowing the final burndown chart to better reflect the progress of work over the sprint.
+    
+  \subsection{Sprint 2}
+  \subsubsection{Sprint Planning}
+  Planning for this sprint focused on completing the API for my systems. Through conversations with the stakeholders it was decided that the priority for this sprint should be completing the API and it's documentation. Creating the web app frontend for the API could be completed later. However, given that there was still quite a larger number of API related tickets on the product backlog, not all were rough into this sprint.
+  
+  \subsubsection{Sprint Review}
+  The following API function were implemented:
+  \begin{itemize}
+    \item Fetch results of all recent test restoration;
+    \item Fetch a list of all scheduled test restorations;
+    \item Create a new test restoration schedule;
+    \item Update test restoration schedule;
+    \item Delete a test restorations schedule;
+    \item Fetch results of all test restorations for a given schedule;
+    \item Add an SSH key to the system;
+    \item Add a GPG key to the system.
+  \end{itemize}
+  Documentation for each of the API functions was also completed using Swagger Docs. Thus, the sprint delivered on it's goal of completing and documenting the bulk of the API functions.
+  
+  \subsubsection{Sprint Retrospective}
+  \textbf{What did we do well?}
+  \begin{itemize}
+    \item Working on a concentrated area (API) was very beneficial;
+    \item Product owners were satisfied with the increase in progress updates;
+    \item A lot of knowledge around the documentation using Swagger,  helping to develop the backend without the need for a frontend to test it;
+    \item Time management was better than the previous sprint, results on all tickets being completed.
+  \end{itemize}
+  
+  \noindent\textbf{What could have been done better?}
+  \begin{itemize}
+    \item Burndown chart, although better than the previous sprint is still somewhat inconsistent. However, with all tickets completed, the overall result if still good.
+  \end{itemize}
+  
+  \noindent\textbf{Actions}
+  \begin{itemize}
+    \item Rob Shelly to complete the last few API related tickets from the backlog in order to allows work to proceed to focus soley on the UI.
+  \end{itemize}
+  
+  \subsubsection{Sprint Burndown}
+  
+  \begin{figure}[H]
+    \setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
+    \caption{Sprint 2 Burndown Chart}
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio]{burndown-sprint-2}
+    \label{fig:burndown-sprint-2}
+  \end{figure}
+  
+  \subsubsection{Personal Reflection}
+  I was very happy with the work completed during this sprint. Prior to Sprint planning and backlog refinement I had been planning on completing tickets by grouping API functions with their corresponding UI elements. However, at the advice of the product owners I decided to focus solely on completing the API first before moving on the the UI.
+  
+  Having completed the sprint I now feel that separating the API and UI was a much more productive approach. Swagger, which was used to document the API also contains a feature to test the the documented API calls. Therefore, by focusing only on writing and documenting the API, I was able to stay in the mindset of the API functions without having to constantly transition between developing API calls and UI elements, while still being able to test the functions using Swagger.
+  
+   
 
 	\subsection{Sprint n}
 

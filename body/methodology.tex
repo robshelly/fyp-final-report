@@ -49,8 +49,26 @@
 	TODO
 
 	\subsection{Documentation}
-	% TODO
-	TODO
+  Documentation for the systems API is provided using Swagger. Swagger uses \textit{yaml} or \textit{json} files to document API endpoints, providing functions descriptions, parameters, possible responses and examples. Using the Swagger UI tool, the documented endpoints can then be visualized on the fronted of the web app \citep{swagger}.
+  
+  \begin{figure}[H]
+    \setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
+    \caption{Some of the Systems API Endpoints}
+    \centering
+    \includegraphics[scale=0.5,keepaspectratio]{api-endpoints}
+    \label{fig:api-endpoints}
+  \end{figure}
+  
+  
+  By expanding any of the endpoints shown in \autoref{fig:api-endpoints}, the full documentation for that endpoints can be viewed. Along with providing the inbuilt documentation for the system, the Swagger UI tool also allows the user to test the endpoints, either using the sample data provided by the documentation or user input data. A sample of this can be seen in \autoref{fig:api-sample}.
+  
+  \begin{figure}[H]
+    \setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
+    \caption{The Documentation for the \textit{Run Restore} Endpoints}
+    \centering
+    \includegraphics[scale=0.5,keepaspectratio]{api-sample}
+    \label{fig:api-sample}
+  \end{figure}
 	
 	\subsection{Completion and Handover}
 	Due to the goal driven and iterative aspects of Agile methodology, a clear idea of a completed project is required. This will provide the final goal to work towards and a clear understanding of when this goal is reached. Accordingly, a \textit{Definition of Done} is a a key element of Scrum \citep{panchal}. The design methodology for this project will have the following stipulations:
