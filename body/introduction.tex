@@ -6,7 +6,9 @@ In January 2017 GitLab suffered a data loss incident which was widely reported i
 The incident was widely reported in the tech industry with the story being picked up by a number of outlets including TechCrunch \citeyearpar{lomas} and The Register \citeyearpar{sharwood}. For many, the focal point of the story was the failed backups. The incident highlighted the need for regular verification of backups. A simple way of performing this verification is to regularly restore data. The method of verification is to perform a restore of the data, which can be a mundane and time consuming task. The aim of this project is to create a solution to the issue. A system which can notify administrators when backups have failed may have prevented the data loss in the GitLab ordeal.
 
 \subsection{Aims \& Objectives}
-The overall objective is to create a system to test that uncorrupted backups exist and contain valid, readable data. A system will be created that allows sysadmins to test backups and to schedule the regular testing of backups. This will be achieved by performing restoration on the backups. The main objectives of the system are as follows:
+The overall objective is to create a system to test that uncorrupted backups exist and contain valid, readable data. A system will be created that allows sysadmins to test backups and to schedule the regular testing of backups. This will be achieved by performing restoration on the backups.
+
+The product owner of this project is Red Hat which has an interested in this area, having closely followed the incident detailed above. The main objectives of the system in accordance with the desires of Red Hat are as follows:
 
 \begin{AO}
 	\item \label{ao1} Eliminate the mundane and time consuming task of backup testing by automating regular backup restorations and recording results;

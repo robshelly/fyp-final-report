@@ -150,6 +150,29 @@
 		\end{figure}
 
 	\subsection{Enterprise Level Consideration}
-	% TODO
-	TODO
-	
+  As this project is being designed for the product owners to potentially deploy it to test production database backups there are a number of key aspects which should be considered. This is to ensure the product does not just achieved it's main goals but does so in a secure and useable manner for the product owners.
+  
+  \subsubsection{Security}
+  Security is a key aspects of this project. In fact , due to the importance of security it has been defined as one of the key aims of the project (\hyperref[ao4]{AO4}). The security of this system shall by determined by two main areas.
+  
+  \subsubsubsection{Storage of Private Keys}
+  This pertains the storage of the SSH private keys for accessing backup servers and the GPG private keys used to decrypt the backups. Safe storage of such keys is paramount to the project as exposing these keys would comprise production data. Accordingly, during the research phase of the project, \hyperref[poc3]{POC3} was concerned with investigation this area.
+  In this POC, Jenkins Credentials Plugin was used to stored the credentials. A prototype was then used to to demonstrated that the private keys could be used to implement a backup restoration while maintain the confidentiality of the keys.
+  
+  \subsubsubsection{User Authentication}
+  Users of the system will not be able to retrieve any sensitive data through it's use rather they will be ability to schedule and run backup restorations. Restorations do not affect the existing backup files or servers, rather completing the test restoration on a disposable server in AWS. Also restorations are idempotent, so running more than one test on a given backup wont affect the results.
+  
+  Therefore, malicious users of the system could not affect data confidentiality. However, they could incur increased AWS costs by running and scheduling extra restorations. For that reason access to the UI should be restricted.  Accordingly, a the implementation of a user authentication system has been added to the product backlog. However, it was decided that for the purposed of creating an Minimum Viable Product (MVP), user authentication should be prioritised rather low on the backlog as an final product would likely run in a private network or Virtual Private Cloud. However, user authentication will still be implemented for version two.
+  
+  \subsubsection{Deployment}
+  During discussion with the product owners it was decided that the deployment on installation of the final product would be a simple task, requiring little or no configuration of the user. For this reason it was decided that the final product should be delivered as a Docker image.
+  
+  However, the final system consist of two servers; the management server (Jenkins) and a web server (UI). This means two services are required to run within the Docker image. However, this is not the recommended practice for Docker images \citep{docker2}. A container should be run as a single process which if terminated will terminate the container. For this reason the final product should be package as two images. These images can still be easily run with any configuration required. They will run in separate containers but are preconfigured to be able to communicate.
+  
+  This method of deploying systems as a network of containers is in fact a common practice in the industry, leading to the development of container management platforms such as Kubernetes \citep{kubernetes}. Accordingly, OpenShift, Red Hat's own container management platform has been considered as the suitable deployment location for the final product.
+  
+  \subsubsection{Performance}
+  The use of containers to run the final products play a key rol in the performance of the system. Containers are similar to virtual machines allowing them to run ona variety of platforms. However, as containers virtualise software instead of hardware, they are much smaller and faster to run \citep{docker}.
+  
+  Packaging the final product as Docker images is therefore the suitable solution for implementing a high performance system. The images will contain, and therefore run, only the necessary software to run both the Jenkins server and the node app. Indeed, both the Jenkins server and app server can be easily run on a single device.
+  

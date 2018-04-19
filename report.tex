@@ -43,6 +43,25 @@
 \usepackage{xcolor}
 \hypersetup{colorlinks,linkcolor={blue!80!black},citecolor={blue!80!black},urlcolor={blue!80!black}}
 
+% Add appendice titles
+\usepackage[title]{appendix}
+
+% For inserting code blocks
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\space},
+  aboveskip=20pt,
+  belowskip=20pt,
+  showstringspaces=false
+}
+% Change caption title for lslistings
+\renewcommand{\lstlistingname}{Code Sample}
+
+
 % Define custom lists
 \usepackage{enumitem}
 \newlist{AO}{enumerate}{1}
@@ -50,6 +69,11 @@
 
 \newlist{POC}{enumerate}{1}
 \setlist[POC,1]{label = \textbf{POC\arabic*}}
+
+% Define a subsubsubsection
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
 
 % Title Page
 \title{Backup Management and Orchestration System\\
@@ -90,11 +114,15 @@
 \include{body/summary}
 
 
-
 \newpage
 \renewcommand*{\bibfont}{\raggedright}
 \bibliographystyle{plainnat}
 \bibliography{bibliography/bibtex}
+
+\begin{appendices}
+  \include{appendices/repos}
+  \include{appendices/images}
+\end{appendices}
 
 \end{document}
 

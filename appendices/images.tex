@@ -1,0 +1,28 @@
+\section{Docker Images}
+In order to run the Docker images they should be first built by the user, allowing the user to configure their own authentication credentials on the Jenkins server and their own email address for Jenkins' SMTP server.
+
+\noindent\begin{minipage}{\textwidth}
+  \begin{lstlisting}[caption={Build Jenkins Management Server},label=jenkins,language=bash]
+  git clone https://github.com/robshelly/fyp-jenkins-server.git
+  
+  docker build \
+  --build-arg jenkins_username='admin' \
+  --build-arg jenkins_password='fyp-project' \
+  --build-arg email_address='EMAIL' \
+  --build-arg email_password='PASSWORD' \
+  -t jenkins-backup-test-centre .
+  
+  docker run -d --name jenkins -p 8080:8080 jenkins-backup-test-centre
+  \end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{\textwidth}
+  \begin{lstlisting}[caption={Build Fronted UI Server},label=jenkins,language=bash]
+  git clone https://github.com/robshelly/fyp-frontend.git
+  
+  docker build -t dashboard-backup-test-centre .
+
+  docker run --net="host" -d --name dashboard -p 3000:3000 -p 4000:4000 dashboard-backup-test-centre
+  \end{lstlisting}
+\end{minipage}
+

@@ -258,10 +258,59 @@
     
    In accordance with the actions listed during the previous retrospective, prior to commencing this sprint some consideration was given to packaging the final product. Previously the plan had been to package the UI as a Docker image, while the Jenkins backend would run on an AWS instance. This however would require some setup of the systems. Therefore, it was decided that if possible the system should be packaged entirely within a single Docker image.
    
-	\subsection{Sprint n}
+	\subsection{Sprint 5}
+  \subsubsection{Sprint Planning}
+  Planning for this spring was concerned with delivering the MVP as a packaged product. During the previous sprint retrospective with the product owners, they suggested that the final product be packaged as a Docker image. However, after some research into this it was decided that the better solution would be to deliver two Docker images, one for the Jenkins management server and one for the UI web server. This in fact a better practice as it is not advisable to run more than one service inside a Docker container. This will still allow the final product to be easily run as both containers will be able to communicate with one another.
+  
+  \subsubsection{Sprint Review}
+  
+  \begin{itemize}
+    %  TODO
+    \item TODO
+  \end{itemize}
+  
+  \subsubsection{Sprint Retrospective}
+  \textbf{What did we do well?}
+  \begin{itemize}
+    % TODO
+    \item TODO
+  \end{itemize}
+  
+  \noindent\textbf{What could have been done better?}
+  \begin{itemize}
+    % TODO
+    \item TODO
+  \end{itemize}
+  
+  \subsubsection{Sprint Burndown}
+  
+  % TODO
+  TODO
+%  \begin{figure}[H]
+%    \setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
+%    \caption{Sprint 4 Burndown Chart}
+%    \centering
+%    \includegraphics[width=\textwidth,keepaspectratio]{burndown-sprint-4}
+%    \label{fig:burndown-sprint-3}
+%  \end{figure}
+  
+  \subsubsection{Personal Reflection}
+  % TODO
+  TODO
+  
 
 	\subsection{Sprint Metrics}
-	% TODO
-	TODO
+  
+  \subsection{Sprint Velocities}
+  A Velocity Chart is shown in \autoref{fig:velocity}.  This shows the work committed to and completed in each of the sprints in terms of story points. The chart shows that initially the development time available during the sprints was being overestimated. Thus, in the first two sprints all tickets committed were not completed. However, by the third sprint this had been rectified, with better estimations and time management leading to  more consistent results.
+  
+  \begin{figure}[H]
+    \setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
+    \caption{Velocity Chart}
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio]{velocity}
+    \label{fig:velocity}
+  \end{figure}
 
-	
+	\subsection{Sprint Burndowns}
+  Sprint burndown charts have been provided for completed sprints. The burndown charts provided valuable feedback on the development of each sprint. This is especially evident from earlier sprints where the charts highlighted that much of the development work was begin carried out during a relatively short period of the two-week-long sprints. This was due to time also spent on other projects. This feedback helped to better manage time in subsequent sprints in which the sprints may have been delayed or shortened two reflected only the time allocated to this project.
