@@ -13,10 +13,7 @@
 % Alternative definition to have the remarks
 % in the margins instead of footnotes
 \usepackage{todonotes}
-\setlength{\marginparwidth}{3cm}
-\makeatletter
-\setremarkmarkup{\todo[color=Changes@Color#1!20,size=\scriptsize]{#1: #2}}
-\makeatother
+
 
 %% Definition of a plain remark/note
 \newcommand{\note}[2][]{\added[#1,remark={#2}]{}}
