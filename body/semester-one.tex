@@ -4,15 +4,15 @@ Semester one consisted of the research phase of this project. As part of the res
 
 \begin{POC}
 	\item \label{poc1} \textbf{Validation:} How will a restoration be validated? What criteria are needed for a backup to be deemed successful?
-	\item \label{poc2} \textbf{User Rules:} How will a user use the system? Can the the implementation of a backup restoration be abstracted from the user by means of a user friendly frontend?
+	\item \label{poc2} \textbf{User Rules:} How will a user use the system? Can the implementation of a backup restoration be abstracted from the user by means of a user friendly frontend?
 	\item \label{poc3} \textbf{Security:} How will the system deal with encrypted backups? Can the Jenkins server safely handle credentials and decrypt backups in order to perform the test restoration?
 \end{POC}
 
 \subsection{\ref{poc1} Validation}
-  This POC was test by creating a Jenkins job which restores a backup file to the DBMS and perform a full read of the database.
+  This POC was tested by creating a Jenkins job which restores a backup file to the DBMS and performs a full read of the database.
 
 	\subsubsection{Work Completed}
-	In order to prove that validation can be achieved via Jenkins the following infrastructure was deployed to AWS:
+	In order to prove that validation can be achieved via Jenkins, the following infrastructure was deployed to AWS:
 	\begin{itemize}
 		\item \textbf{Backup Server:} An EC2 instance on which a backup file was saved.
 		\item \textbf{Restoration Server:} An EC2 instance with the MongoDB DBMS installed and running.
@@ -27,7 +27,7 @@ Semester one consisted of the research phase of this project. As part of the res
 	\end{enumerate}
 
 	\subsubsection{Results}
-  The POC showed backups can be successfully transported to and imported into a remote server. Once imported, a successful \textit{findAll} command proves that the data is still readable. The POC also demonstrated that a the SSH credentials for the various servers could be stored in Jenkins and used securely into order connect to them.
+  The POC showed backups can be successfully transported to and imported into a remote server. Once imported, a successful \textit{findAll} command proves that the data is still readable. The POC also demonstrated that the SSH credentials for the various servers could be stored in Jenkins and used securely into order to connect to them.
   
 \subsection{\ref{poc2} User Rules}
 	This POC was tested by creating a basic frontend with React which uses Jenkins API to trigger an arbitrary Jenkins Job.
@@ -39,7 +39,7 @@ Semester one consisted of the research phase of this project. As part of the res
     \item A parameterised Jenkins job was;
     \item The NodeJS wrapper for the Jenkins API, which allows Jenkins API calls to be made with NodeJS.
   \end{itemize}
-  When the web form was completed and submitted, the web app trigger the parameterised job (including the parameters input to the form) via the api.
+  When the web form was completed and submitted, the web app triggered the parameterised job (including the parameters input to the form) via the API.
 
   \subsubsection{Results}
   The POC demonstrated that implementation of Jenkins jobs can be abstracted from the user therefore allowing the system to present the user with a simple form to complete in order to commence an automated restoration.
@@ -48,11 +48,11 @@ Semester one consisted of the research phase of this project. As part of the res
   This POC was tested using the same AWS infrastructure as \hyperref[poc1]{POC1}. In this instance, the backup file had been encrypted with a GPG.
 
   \subsubsection{Work Completed}
-	In this instance the Jenkins job copied the encrypted backup to the \textit{restoration} server. The backup was then decrypted using GPG and a private key on the \textit{restoration} server and the contents printed to verify decryption. 
+	In this instance the Jenkins job copied the encrypted backup to the \textit{restoration} server. The backup was then decrypted using GPG and a private key on the \textit{restoration} server and the contents printed in order to verify decryption. 
 	
   \subsubsection{Results}
-  This POC demonstrated that the system, in it's current architecture, can successfully copy an encrypted backup file to the \textit{restoration} server where it is decrypted. It also demonstrated that the GPG private keys can be securely stored and used by Jenkins.
+  This POC demonstrated that the system, in its current architecture, can successfully copy an encrypted backup file to the \textit{restoration} server where it is decrypted. It also demonstrated that the GPG private keys can be securely stored and used by Jenkins.
 
   \subsection{Prototype}
-  As a final task, the three POCs were integrated to create a prototype. The prototype consisted of a single form on a web app which allowed the user to inupt the IP address or DNS and filename of a encrypted backup file. When the form was submitted, it triggered a Jenkins job which moved the file to a restoration server where it decrypted the file. It then import the file into a DBMS and preformed a full read of the database, thereby proving that the backup file was valid.
+  As a final task, the three POCs were integrated for the purpose of creating a prototype. The prototype consisted of a single form on a web app which allowed the user to input the IP address or DNS and filename of a encrypted backup file. When the form was submitted, it triggered a Jenkins job which moved the file to a restoration server where it decrypted the file. It then imported the file into a DBMS and performed a full read of the database, thereby proving that the backup file was valid.
 

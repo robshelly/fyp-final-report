@@ -6,8 +6,8 @@
 	
 	A particular Agile framework which will be used for this project is Scrum. Scrum defines terms used to organise development:
 	\begin{itemize}
-		\item \textbf{Product Backlog:} This is a prioritised list of jobs which need to be completed. In its entirety, it represents the full development of the project, i.e. all the work required to deliver the final product.
-		\item \textbf{Sprints:} Development is divided into a number of equal length periods (often two or three weeks) of work known as sprints. Each sprint has it's own small goal to achieve, with some items from the head of the product backlog being developed. This project will be organized into six sprints of two weeks each.
+		\item \textbf{Product Backlog:} This is a prioritised list of the jobs which need to be completed. In its entirety, it represents the full development of the project, i.e. all the work required to deliver the final product.
+		\item \textbf{Sprints:} Development is divided into a number of equal length periods (often two or three weeks) of work known as sprints. Each sprint has its own small goal to achieve, with some items from the head of the product backlog being developed. This project will be organized into six sprints of two weeks each.
 		\item \textbf{Daily Scrum:} The daily scrum, also known as daily \textit{standup}, is a daily meeting at which team members meet to discuss progress and address issues encountered.
 		\item \textbf{Sprint Reviews:} At the end of each sprint a review of the work completed is carried out. The next sprint will then begin, developing the next group of items from the backlog being\citep{scrum}.
 	\end{itemize}
@@ -17,25 +17,24 @@
 		\item \textbf{Scrum Master:} The scrum master is responsible for maintaining focus on the current batch of backlog items during each sprint \cite{agile}.
 	\end{itemize}
 	
-	Scrum is an ideal model for developing this project. The Product Owner will be Reat
-  d Hat and the role of scrum master will be played by the project supervisor. Development will broken into six sprints of two weeks. However, as this is not a team project, daily stand-up meetings will not be held. Rather, meetings with the scrum master on weekly basis and meetings with the product owner on a similar schedule as needed. The user stories which have been used to describe the requirements of the project will be organised into the product backlog.
+	Scrum is an ideal model for developing this project. The Product Owner will be Red Hat and the role of scrum master will be played by the project supervisor. Development will broken into six sprints of two weeks. However, as this is not a team project, daily stand-up meetings will not be held. Rather, meetings with the scrum master on weekly basis and meetings with the product owner on a similar schedule as needed. The user stories which have been used to describe the requirements of the project will be organised into the product backlog.
 	
 	\subsection{Jira}
-	In conjunction with the Scrum framework the Jira development tool will be used. Jira is a project management tool which allows the creation and tracking of tasks or issues. The product backlog, comprising of the project user stories, can be created within the management tool with tasks created for each of the stories on the backlog. Each task can then be prioritised as the in the manner chosen by the product owner \citep{jira}.
+	In conjunction with the Scrum framework the Jira development tool will be used. Jira is a project management tool which allows the creation and tracking of tasks or issues. The product backlog, comprising of the project user stories, can be created within the management tool with tasks created for each of the stories on the backlog. Each task can then be prioritised in a manner chosen by the product owner \citep{jira}.
 	
 	A number of Jira's feature make it an ideal tool to aid in the organisation of this project:
 	\begin{itemize}
-		\item \textbf{Issue Tracking:} Progress on issues within the product backlog can be tracked though useful status tags such as In Progress, On Hold and Done. This provides a mechanism for recording progress on each of the user stories which implemented for this project. 
-		\item \textbf{Scrum Boards: } Sprints can be represented using Scrum boards. Scrum boards provide a way of organising the issues in a visual manner, grouping them into logical categories (To Do, In Progress, Done) focus on the progress of the current sprint \cite{scruminc}.
+		\item \textbf{Issue Tracking:} Progress on issues within the product backlog can be tracked through useful status tags such as In Progress, On Hold and Done. This provides a mechanism for recording progress on each of the user stories which need to be implemented for this project. 
+		\item \textbf{Scrum Boards: } Sprints can be represented using Scrum boards. Scrum boards provide a way of organising the issues in a visual manner, grouping them into logical categories (To Do, In Progress, Done) that focus on the progress of the current sprint \cite{scruminc}.
 	\end{itemize}
 
-	\subsection{Continous Integration/Deployment}
+	\subsection{Continuous Integration/Deployment}
 	Continuous Integration/Continuous Deployment (or continuous Delivery) is a development concept that focuses on the frequent and automated testing building and releasing of code. It aims to remove the large workload required when it is time to release a version or update of a product by performing the same process in a automated manner on every code commit \citep{pittet}.
 	
 	Continuous integration refers to preparing the code for release as often as code commits are performed. For example, running tests and building Docker images on each commit meaning code is prepared for release at each stage of development, instead of when it come to release time \citep{ramos}.
 	Continuous Deployment is a step beyond Continuous Integration. After the code is built it is deployed to a server. However, this may be a development server. Pushing the built code to production requires a manual trigger. Continuous Delivery automates this final manual trigger, meaning the entire process of moving code through testing, building and deployment to production is entirely automated \citep{ellingwood}.
 	
-	For this project, CI/CD (continuous development in this case) will be implemented using a Jenkins automated build server.Each time a commit of the frontend source code is push to GitHub, the app will be built as a Docker image and deployed to ECS by Jenkins on every code commit. This workflow is shown in \autoref{fig:cicd}.
+	For this project, CI/CD (continuous development in this case) will be implemented using a Jenkins automated build server. Each time a commit of the frontend source code is pushed to GitHub, the app will be built as a Docker image and deployed to ECS by Jenkins on every code commit. This workflow is shown in \autoref{fig:cicd}.
 	
 	\begin{figure}[H]
 		\setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
@@ -57,7 +56,7 @@
   \end{figure}
   
   
-  By expanding any of the endpoints shown in \autoref{fig:api-endpoints}, the full documentation for that endpoints can be viewed. Along with providing the inbuilt documentation for the system, the Swagger UI tool also allows the user to test the endpoints, either using the sample data provided by the documentation or user input data. A sample of this can be seen in \autoref{fig:api-sample}. Thus, full testing the system's API can be completed using Swagger.
+  By expanding any of the endpoints shown in \autoref{fig:api-endpoints}, the full documentation for that endpoint can be viewed. Along with providing the inbuilt documentation for the system, the Swagger UI tool also allows the user to test the endpoints, either using the sample data provided by the documentation or user input data. A sample of this can be seen in \autoref{fig:api-sample}. Thus, full testing the system's API can be completed using Swagger.
   
   \begin{figure}[H]
     \setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}

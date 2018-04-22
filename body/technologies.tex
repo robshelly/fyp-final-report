@@ -1,19 +1,19 @@
 \section{Technologies}
 
 \subsection{Docker}
-Docker is a container platform for building and managing applications. This project will implement the final product as Docker images that run on the platform. A container image is a modular piece of software. It encapsulates all the code and tools needed to run the software packaged in the image. The image can then be run in a container on any environment using a container platform or service. Thus, it runs independent of the hardware or operating system. The container also isolates the software from other images and software running within the environment \citep{docker}.
+Docker is a container platform which allows the building and managing applications. This project will implement the final product as Docker images that run on the platform. A container image is a modular piece of software. It encapsulates all the code and tools needed to run the software packaged in the image. The image can then be run in a container on any environment using a container platform or service. Thus, it runs independent of the hardware or operating system. The container also isolates the software from other images and software running within the environment \citep{docker}.
 
-The ability to build applications as OS agnostic images makes is appealing for this project. It allows the frontend application to be built as an image and run on any system running Docker, for example an AWS EC2 instance. 
+The ability to build applications as OS agnostic images makes it appealing for this project. It allows the frontend application to be built as an image and run on any system running Docker, for example an AWS EC2 instance. 
 
 
 \subsection{Amazon Web Services}
-The project will make extensive use of Amazon Web Services (AWS) with most or possibly all of the systems infrastructure deployed on AWS, particularly using EC2 and ECS.
+The project will make extensive use of Amazon Web Services (AWS) with most or possibly all of the system's infrastructure deployed on AWS, particularly using EC2 and ECS.
 
 EC2 is Amazon's compute service. It allows easy deployment and management of virtual compute resources within the cloud. The flexibility of operating systems, virtual machines (or instances as they are known in AWS) and size of volume of storage make it ideal for this project \citep{ec2}. It will allow the system to create instances with only the necessary resources required (i.e. memory and storage) to test the restoration of a given backup. This keeps the cost of testing to a minimum in keeping with Aim \ref{ao3}.
 
 ECS is Amazon's container management service. It allows Docker images to be easily deployed to and run on  EC2 instances, taking care of Docker installation and management, for example managing port mappings between containers and the host. There is no added cost for using ECS. i.e. the customer only pays for the EC2 instances \citep{ecs}. 
 
-\label{aws-cli} AWS also features a command line interface for building, modifying and destroying infrastructure across all of it's services, providing a programmatic method of creating the resources. The ability to do so allows for the automation of the infrastructure creation and destruction. This makes AWS an ideal platform for this project as automation is an objective of the project set out in Aim \ref{ao1}. 
+\label{aws-cli} AWS also features a command line interface for building, modifying and destroying infrastructure across all of its services, providing a programmatic method of creating the resources. The ability to do so allows for the automation of the infrastructure creation and destruction. This makes AWS an ideal platform for this project as automation is an objective of the project set out in Aim \ref{ao1}. 
 
 
 \subsection{Jenkins}
@@ -29,11 +29,11 @@ Jenkins was chosen as a backend service for this project as it, along with it's 
 
 
 \subsection{Node}
-The frontend of the system will be designed using Node (also known as Node.js). Node is a JavaScript runtime environment for building network applications. It is light-weight and efficient framework through its event driven, no blocking I/O implementation. 
+The frontend of the system will be designed using Node (also known as Node.js). Node is a JavaScript runtime environment for building network applications. It is lightweight and efficient framework through its event driven, no blocking I/O implementation. 
 
 The default package manager of Node is \textit{npm} (for Node Package manager). It is the worlds largest software registry \citep{npm}. The vast registry of free and open source packages available make Node an attractive choice for this project. Of particular interest are the multiple Node clients for Jenkins. These are Node wrappers for the Jenkins REST API enabling easy integration of the frontend with the Jenkins backend.
 
-Although any of a number of frameworks could have been used, for example Django, Node was chosen for this project due it's light-weight design and extensibility through \textit{npm}, including the aforementioned Jenkins API wrappers.
+Although any of a number of frameworks could have been used, for example Django, Node was chosen for this project due its lightweight design and extensibility through \textit{npm}, including the aforementioned Jenkins API wrappers.
  
 \subsection{React}
 The UI element of the frontend will be built using React, a JavaScript library available through \textit{npm} for building user interfaces. React is developed to work independently of other technologies, meaning it can be integrated easily with Node and other \textit{npm} packages without the need for refactoring. React builds UIs as a set of components, each managing their own state and implementing their own render function. This allows fast and efficient rendering of data changes as only components that are updated will be re-rendered.

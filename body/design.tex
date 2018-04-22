@@ -16,11 +16,11 @@
 			\label{fig:diagram}
 		\end{figure}
 		
-		\noindent \textbf{Management Server:} This will be a small low cost AWS instance on which the Jenkins automation server will be installed. The majority of the system's functionality will be carried out and/or orchestrated by this server. Jenkins jobs will copy the backups from their location to a disposable instance and implement the necessary steps to validate them such as importing and and reading.
+		\noindent \textbf{Management Server:} This will be a small low cost AWS instance on which the Jenkins automation server will be installed. The majority of the system's functionality will be carried out and/or orchestrated by this server. Jenkins jobs will copy the backups from their location to a disposable instance and implement the necessary steps to validate them such as importing and reading.
 		
 		\noindent \textbf{User Interface:} This will provide a simple user interface (UI) for the system, implemented as a simple web app, hosted on AWS. It will allow users with little knowledge of Jenkins and AWS to perform backup restoration checks by adding a layer of abstraction. Users will be able to run restorations by providing the parameters such as the backup file and its location. The UI will utilise the Jenkins API to execute the restoration with the parameters provided.
 		
-		\noindent\textbf{Disposable Instances:} Disposable infrastructure will be used to perform the restoration. This will consist of EC2 instances running the necessary DBMS to perform the restoration. They can also be destroyed afterwards, destroying the data and therefore maintaining confidentiality.
+		\noindent\textbf{Disposable Instances:} Disposable infrastructure will be used to perform the restoration. This will consist of EC2 instances running the necessary DBMS to perform the restoration. They can also be destroyed afterwards, destroying the decrypted backup, data and therefore maintaining confidentiality.
 
 	\subsection{Formal Modelling}
 	\subsubsection{Sequence Diagrams}
@@ -33,9 +33,9 @@
 		\end{enumerate}
 		Upon completion the \textit{restoration} server is terminated.
 
-		\autoref{fig:seq-schedule-restore} shows the process of a scheduling regular backup restoration tests. Again, this is triggered by a user from the web interface. The web interface will pass the JSON or XML configuration for a job to the Jenkins server. The server verify the backup server exists before creating the job.
+		\autoref{fig:seq-schedule-restore} shows the process of a scheduling regular backup restoration tests. Again, this is triggered by a user from the web interface. The web interface will pass the JSON or XML configuration for a job to the Jenkins server. The server verifies the backup server exists before creating the job.
 		
-		\autoref{fig:seq-delete-restore} Show the process of deleting an existing scheduled job. The user triggers this process from the web interface. This sends a delete commands to the Jenkins server via the API to remove the schedule job. The status of the command, indicating a successful or failed restore, is returned to the user.
+		\autoref{fig:seq-delete-restore} Show the process of deleting an existing scheduled job. The user triggers this process from the web interface. This sends a \textit{delete} command to the Jenkins server via the API to remove the schedule job. The status of the command, indicating a successful or failed restore, is returned to the user.
 		
 		\begin{figure}[H]
 			\setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
@@ -150,29 +150,29 @@
 		\end{figure}
 
 	\subsection{Enterprise Level Consideration}
-  As this project is being designed for the product owners to potentially deploy it to test production database backups there are a number of key aspects which should be considered. This is to ensure the product does not just achieved it's main goals but does so in a secure and useable manner for the product owners.
+  As this project is being designed for the product owners to potentially deploy it to test production database backups, there are a number of key aspects which should be considered. This is to ensure that the product does not just achieved its main goals but does so in a secure and useable manner for the product owners.
   
   \subsubsection{Security}
   Security is a key aspects of this project. In fact , due to the importance of security it has been defined as one of the key aims of the project (\hyperref[ao4]{AO4}). The security of this system shall by determined by two main areas.
   
   \subsubsubsection{Storage of Private Keys}
-  This pertains the storage of the SSH private keys for accessing backup servers and the GPG private keys used to decrypt the backups. Safe storage of such keys is paramount to the project as exposing these keys would comprise production data. Accordingly, during the research phase of the project, \hyperref[poc3]{POC3} was concerned with investigation this area.
-  In this POC, Jenkins Credentials Plugin was used to stored the credentials. A prototype was then used to to demonstrated that the private keys could be used to implement a backup restoration while maintain the confidentiality of the keys.
+  This pertains to the storage of the SSH private keys for accessing backup servers and the GPG private keys used to decrypt the backups. Safe storage of such keys is paramount to the project as exposing these keys would compromise production data. Accordingly, during the research phase of the project, \hyperref[poc3]{POC3} was concerned with the investigation of this area.
+  In this POC, Jenkins Credentials Plugin was used to store the credentials. A prototype was then used to demonstrate that the private keys could be used to implement a backup restoration while maintaining the confidentiality of the keys.
   
   \subsubsubsection{User Authentication}
-  Users of the system will not be able to retrieve any sensitive data through it's use rather they will be ability to schedule and run backup restorations. Restorations do not affect the existing backup files or servers, rather completing the test restoration on a disposable server in AWS. Also restorations are idempotent, so running more than one test on a given backup wont affect the results.
+  Users of the system will not be able to retrieve any sensitive data through its use, rather they will only have the ability to schedule and run backup restorations. Restorations do not affect the existing backup files or servers as the test is completed on a disposable server in AWS. Also restorations are idempotent, meaning running more than one test on a given backup won't affect the results.
   
-  Therefore, malicious users of the system could not affect data confidentiality. However, they could incur increased AWS costs by running and scheduling extra restorations. For that reason access to the UI should be restricted.  Accordingly, a the implementation of a user authentication system has been added to the product backlog. However, it was decided that for the purposed of creating an Minimum Viable Product (MVP), user authentication should be prioritised rather low on the backlog as an final product would likely run in a private network or Virtual Private Cloud. However, user authentication will still be implemented for version two.\note[id=RB]{I don't know if this makes it clear that this is something you're not doing in this project? What is version two?}
+  Therefore, malicious users of the system could not affect data confidentiality. However, they could incur increased AWS costs by running and scheduling extra restorations. For that reason access to the UI should be restricted. Accordingly,  a user authentication system has been implemented. This system currently consists of a single \textit{admin} user, created during the Docker image build with credentials provided. For a minimum viable product it has been decided that this is sufficient. However, plans for future development included a full User system, allowing t\textit{admin} user to add other uses to the systems. This would allow a team manager to provide each team member with their own set of credentials to use the system.
   
   \subsubsection{Deployment}
   During discussion with the product owners it was decided that the deployment on installation of the final product would be a simple task, requiring little or no configuration of the user. For this reason it was decided that the final product should be delivered as a Docker image.
   
-  However, the final system consist of two servers; the management server (Jenkins) and a web server (UI). This means two services are required to run within the Docker image. However, this is not the recommended practice for Docker images \citep{docker2}. A container should be run as a single process which if terminated will terminate the container. For this reason the final product should be package as two images. These images can still be easily run with any configuration required. They will run in separate containers but are preconfigured to be able to communicate.
+  However, the final system consists of two servers; the management server (Jenkins) and a web server (UI). This means two services are required to run within the Docker image. However, this is not the recommended practice for Docker images \citep{docker2}. A container should be run as a single process which if terminated will terminate the container. For this reason the final product should be package as two images. These images can still be easily run with any configuration required. They will run in separate containers but are preconfigured to be able to communicate.
   
-  This method of deploying systems as a network of containers is in fact a common practice in the industry, leading to the development of container management platforms such as Kubernetes \citep{kubernetes}. Accordingly, OpenShift, Red Hat's own container management platform has been considered as the suitable deployment location for the final product. \note[id=RB]{Very well justified - this whole section is very good, well done.}
+  This method of deploying systems as a network of containers is in fact a common practice in the industry, leading to the development of container management platforms such as Kubernetes \citep{kubernetes}. Accordingly, OpenShift, Red Hat's own container management platform has been considered as the suitable deployment location for the final product.
   
   \subsubsection{Performance}
-  The use of containers to run the final products play a key rol in the performance of the system. Containers are similar to virtual machines allowing them to run ona variety of platforms. However, as containers virtualise software instead of hardware, they are much smaller and faster to run \citep{docker}.
+  The use of containers to run the final products play a key role in the performance of the system. Containers are similar to virtual machines allowing them to run on a variety of platforms. However, as containers virtualise software instead of hardware, they are much smaller and faster to run \citep{docker}.
   
   Packaging the final product as Docker images is therefore the suitable solution for implementing a high performance system. The images will contain, and therefore run, only the necessary software to run both the Jenkins server and the node app. Indeed, both the Jenkins server and app server can be easily run on a single device.
   
